@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yücel Eco - Tekstil Atıklarının Geri Dönüşümü</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c5530;
+            background: linear-gradient(135deg, #a8e6cf 0%, #88d8a3 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(44, 85, 48, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #a8e6cf;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: #a8e6cf;
+            color: #2c5530;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 50%, #6fa16e 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="leaves" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="rgba(168,230,207,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23leaves)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: slideInFromTop 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: slideInFromBottom 1s ease-out 0.5s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            color: #2c5530;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            animation: slideInFromBottom 1s ease-out 1s both;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        @keyframes slideInFromTop {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInFromBottom {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5530;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #a8e6cf, #88d8a3);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: #a8e6cf;
+        }
+
+        .about-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 85, 48, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, #6fa16e 0%, #4a7c59 100%);
+            color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c5530;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: rgba(44, 85, 48, 0.05);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4a7c59;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c5530;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a3a1e;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            color: #2c5530;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            color: #2c5530;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #a8e6cf;
+            padding-bottom: 0.5rem;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #a8e6cf 0%, #88d8a3 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-visual {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .stat-visual {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(168, 230, 207, 0.1);
+            border-radius: 10px;
+            min-width: 100px;
+        }
+
+        .stat-visual .number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c5530;
+        }
+
+        .stat-visual .label {
+            font-size: 0.9rem;
+            color: #4a7c59;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-grid,
+            .services-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                max-height: 95vh;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2c5530;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(168, 230, 207, 0.3);
+            border-top: 5px solid #a8e6cf;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">🌱 Yücel Eco</div>
+            <ul class="nav-links">
+                <li><a href="#ana-sayfa">Ana Sayfa</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#hizmetler">Hizmetler</a></li>
+                <li><a href="#istatistikler">İstatistikler</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="ana-sayfa" class="hero">
+            <div class="hero-content">
+                <h1>Yücel Eco</h1>
+                <p>Tekstil atıklarını değerli kaynaklara dönüştürüyoruz</p>
+                <a href="#hakkimizda" class="cta-button">Keşfet</a>
+            </div>
+        </section>
+
+        <section id="hakkimizda" class="about">
+            <div class="container">
+                <h2 class="section-title fade-in">Neden Tekstil Geri Dönüşümü?</h2>
+                <div class="about-grid">
+                    <div class="about-card fade-in" onclick="openModal('cevre-koruma')">
+                        <div class="card-icon">🌍</div>
+                        <h3>Çevre Koruma</h3>
+                        <p>Tekstil endüstrisi dünyada en çok su tüketen ikinci sektör. Bir jean üretimi için 7.500 litre su gerekiyor. Geri dönüşümle su tüketimini %85 oranında azaltıyor, kimyasal boyaların toprak ve suya karışmasını engelliyoruz.</p>
+                        <div class="card-overlay">🔍 Detayları Görüntüle</div>
+                    </div>
+                    <div class="about-card fade-in" onclick="openModal('surdurulebilirlik')">
+                        <div class="card-icon">♻️</div>
+                        <h3>Sürdürülebilirlik</h3>
+                        <p>Türkiye'de yılda 1,2 milyon ton tekstil atığı oluşuyor ve bunun sadece %15'i geri dönüştürülüyor. Fast fashion anlayışının yaygınlaşmasıyla bir kıyafet ortalama sadece 10 kez giyiliyor.</p>
+                        <div class="card-overlay">🔍 Detayları Görüntüle</div>
+                    </div>
+                    <div class="about-card fade-in" onclick="openModal('inovasyon')">
+                        <div class="card-icon">💡</div>
+                        <h3>İnovasyon</h3>
+                        <p>Enzymatik parçalama, mekanik geri kazanım ve kimyasal geri dönüşüm teknolojilerini birleştiriyoruz. Yapay zeka destekli fiber analiz sistemimiz %99 doğrulukla tekstil türlerini ayırıyor.</p>
+                        <div class="card-overlay">🔍 Detayları Görüntüle</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hizmetler" class="services">
+            <div class="container">
+                <h2 class="section-title fade-in">Hizmetlerimiz</h2>
+                <div class="services-grid">
+                    <div class="service-card fade-in" onclick="openModal('atik-toplama')">
+                        <h3>📦 Atık Toplama</h3>
+                        <p>Haftalık düzenli toplama rotalarımızla evlerden, okullardan ve işyerlerinden tekstil atıklarınızı ücretsiz topluyoruz. Mobil uygulamamızdan randevu alabilir, 100+ noktadaki akıllı toplama kutularımıza 7/24 atık bırakabilirsiniz.</p>
+                        <div class="service-overlay">🔍 Detayları Görüntüle</div>
+                    </div>
+                    <div class="service-card fade-in" onclick="openModal('geri-donusum')">
+                        <h3>🔄 Geri Dönüşüm</h3>
+                        <p>3 aşamalı işlem: Otomatik sınıflandırma, ön işleme ve fiber üretimi. Temiz pamuk atıklarından %90 kalitede regenerated cotton üretiyoruz. Günlük 50 ton işleme kapasitemiz var.</p>
+                        <div class="service-overlay">🔍 Detayları Görüntüle</div>
+                    </div>
+                    <div class="service-card fade-in" onclick="openModal('endustriyel-cozumler')">
+                        <h3>🏭 Endüstriyel Çözümler</h3>
+                        <p>Tekstil üreticileri için on-site geri dönüşüm sistemleri kuruyoruz. Zero waste factory konseptiyle üretim sürecinizdeki atık oranını sıfıra indiriyoruz. ISO 14001 ve GRS sertifikasyonu desteği sağlıyoruz.</p>
+                        <div class="service-overlay">🔍 Detayları Görüntüle</div>
+                    </div>
+                    <div class="service-card fade-in" onclick="openModal('raporlama')">
+                        <h3>📊 Raporlama</h3>
+                        <p>Aylık detaylı sürdürülebilirlik raporları hazırlıyoruz. ESG raporlama standardlarına uygun metrikler sunuyoruz. Müşteri dashboard'unuzdan real-time veri akışını takip edebilirsiniz.</p>
+                        <div class="service-overlay">🔍 Detayları Görüntüle</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="istatistikler" class="stats">
+            <div class="container">
+                <h2 class="section-title fade-in">Etki Gücümüz</h2>
+                <div class="stats-grid">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">1000+</div>
+                        <p>Ton Geri Dönüştürülen Tekstil</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">500+</div>
+                        <p>Mutlu Müşteri</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">85%</div>
+                        <p>Atık Azaltma Oranı</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">24/7</div>
+                        <p>Hizmet Desteği</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="iletisim" class="contact">
+            <div class="container">
+                <h2 class="section-title fade-in">İletişim</h2>
+                <form class="contact-form fade-in">
+                    <div class="form-group">
+                        <label for="name">Ad Soyad</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız</label>
+                        <textarea id="message" name="message" placeholder="Tekstil geri dönüşümü hakkında bilgi almak istiyorum..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Gönder</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Yücel Eco. Tüm hakları saklıdır. 🌱 Sürdürülebilir bir gelecek için birlikte çalışıyoruz.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+                <h2 class="modal-title" id="modal-title"></h2>
+                <p class="modal-subtitle" id="modal-subtitle"></p>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loading').style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 85, 48, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(44, 85, 48, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert('Mesajınız alındı! En kısa sürede size dönüş yapacağız.');
+                this.reset();
+            } else {
+                alert('Lütfen tüm gerekli alanları doldurunuz.');
+            }
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = counter.innerText;
+                const isPercentage = target.includes('%');
+                const isTime = target.includes('/');
+                const numericTarget = parseInt(target.replace(/[^\d]/g, ''));
+                
+                if (!isTime && numericTarget > 0) {
+                    let count = 0;
+                    const increment = numericTarget / 50;
+                    
+                    const timer = setInterval(() => {
+                        count += increment;
+                        if (count >= numericTarget) {
+                            counter.innerText = target;
+                            clearInterval(timer);
+                        } else {
+                            const displayValue = Math.floor(count);
+                            counter.innerText = isPercentage ? displayValue + '%' : displayValue + '+';
+                        }
+                    }, 40);
+                }
+            });
+        }
+
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Modal functionality
+        const modalContent = {
+            'cevre-koruma': {
+                title: '🌍 Çevre Koruma',
+                subtitle: 'Doğayı koruyarak geleceği inşa ediyoruz',
+                content: `
+                    <div class="modal-section">
+                        <h3>Tekstil Endüstrisinin Çevresel Etkisi</h3>
+                        <div class="stats-visual">
+                            <div class="stat-visual">
+                                <div class="number">7.500L</div>
+                                <div class="label">Bir jean için su</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">20%</div>
+                                <div class="label">Küresel su kirliliği</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">10%</div>
+                                <div class="label">Karbon emisyonu</div>
+                            </div>
+                        </div>
+                        <p>Tekstil endüstrisi, petrol endüstrisinden sonra dünyada en çok kirliliğe neden olan ikinci sektördür. Her yıl 92 milyon ton tekstil atığı okyanusları kirletiyor.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Geri Dönüşümün Faydaları</h3>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h4>💧 Su Tasarrufu</h4>
+                                <p>1 ton geri dönüştürülen pamuk = 20.000 litre su tasarrufu</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🌬️ CO2 Azaltımı</h4>
+                                <p>1 ton tekstil geri dönüşümü = 3,6 ton CO2 azaltım</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🌳 Ağaç Koruma</h4>
+                                <p>1 ton geri dönüşüm = 17 ağaç korunması</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Günlük Hayattan Örnekler</h3>
+                        <p><strong>🎽 Eski T-shirt:</strong> Geri dönüştürülerek yalıtım malzemesi → Evlerde %30 enerji tasarrufu</p>
+                        <p><strong>👖 Kot Pantolon:</strong> Fiber haline getirilerek yeni kumaş → Virgin pamuk kullanımı %70 azalır</p>
+                        <p><strong>👔 Polyester Gömlek:</strong> PET şişelerle birlikte → Yeni performans kumaşları</p>
+                    </div>
+                `
+            },
+            'surdurulebilirlik': {
+                title: '♻️ Sürdürülebilirlik',
+                subtitle: 'Circular Economy ile geleceği şekillendiriyoruz',
+                content: `
+                    <div class="modal-section">
+                        <h3>Türkiye'de Tekstil Atık Durumu</h3>
+                        <div class="stats-visual">
+                            <div class="stat-visual">
+                                <div class="number">1.2M</div>
+                                <div class="label">Ton/yıl atık</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">15%</div>
+                                <div class="label">Geri dönüşüm oranı</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">10x</div>
+                                <div class="label">Ortalama kullanım</div>
+                            </div>
+                        </div>
+                        <p>Türkiye'de tekstil tüketimi Avrupa ortalamasının 2 katı. Fast fashion trendiyle bir kıyafet ortalama sadece 10 kez giyiliyor.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Circular Economy Prensiplerimiz</h3>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h4>🔄 Tasarım</h4>
+                                <p>Geri dönüştürülebilir malzemelerle tasarım</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>⚡ Kullanım</h4>
+                                <p>Ürün ömrünü uzatan teknolojiler</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>♻️ Dönüşüm</h4>
+                                <p>Atık = hammadde yaklaşımı</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Başarı Hikayeleri</h3>
+                        <p><strong>📈 Zara Partnership:</strong> 2024'te 500 ton tekstil atığını geri dönüştürdük</p>
+                        <p><strong>🏫 Okul Projesi:</strong> İstanbul'da 50 okuldan toplanan kıyafetler yeni üniformalar oldu</p>
+                        <p><strong>🏭 Fabrika Sıfır Atık:</strong> Bursa'daki tekstil fabrikası %100 sıfır atık hedefine ulaştı</p>
+                    </div>
+                `
+            },
+            'inovasyon': {
+                title: '💡 İnovasyon',
+                subtitle: 'Teknoloji ile geleceği şekillendiriyoruz',
+                content: `
+                    <div class="modal-section">
+                        <h3>İleri Teknoloji Çözümlerimiz</h3>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h4>🤖 Yapay Zeka</h4>
+                                <p>%99 doğrulukla fiber analizi ve otomatik sınıflandırma</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🧬 Enzymatik İşlem</h4>
+                                <p>Çevre dostu kimyasal parçalama teknolojisi</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🔗 Blokzincir</h4>
+                                <p>Her ürünün şeffaf izlenebilirlik sistemi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Nanofiber Teknolojimiz</h3>
+                        <p>Eski kumaşları moleküler seviyede parçalayıp yeni, daha güçlü iplikler üretiyoruz:</p>
+                        <div class="stats-visual">
+                            <div class="stat-visual">
+                                <div class="number">3x</div>
+                                <div class="label">Daha dayanıklı</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">50%</div>
+                                <div class="label">Daha hafif</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">100%</div>
+                                <div class="label">Su geçirmez</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>AR/VR Geri Dönüşüm Simülasyonu</h3>
+                        <p>Müşterilerimiz VR gözlüklerle kıyafetlerinin nasıl yeni ürünlere dönüştüğünü gerçek zamanlı izleyebiliyor. Bu deneyim, geri dönüşüm bilincini %85 artırdı.</p>
+                    </div>
+                `
+            },
+            'atik-toplama': {
+                title: '📦 Atık Toplama',
+                subtitle: 'Kapınızdan alıyoruz, geleceğe taşıyoruz',
+                content: `
+                    <div class="modal-section">
+                        <h3>Toplama Sistemimiz</h3>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h4>🚛 Haftalık Rota</h4>
+                                <p>Düzenli toplama programı ile evinizden ücretsiz alma</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>📱 Mobil Uygulama</h4>
+                                <p>Randevu al, takip et, puan kazan sistemi</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🏪 Akıllı Kutular</h4>
+                                <p>100+ noktada 7/24 erişilebilir toplama kutuları</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Kabul Ettiğimiz Tekstiller</h3>
+                        <p>✅ <strong>Her türlü kıyafet:</strong> Kot, t-shirt, elbise, pantolon, gömlek</p>
+                        <p>✅ <strong>Ev tekstili:</strong> Perde, çarşaf, havlu, battaniye</p>
+                        <p>✅ <strong>Ayakkabı ve çanta:</strong> Deri, kanvas, sentetik malzemeler</p>
+                        <p>✅ <strong>Durum fark etmez:</strong> Yırtık, lekeli, solmuş, küçülmüş</p>
+                        <p>❌ <strong>Kabul etmiyoruz:</strong> Islak/küflü tekstiler, asbest içeren malzemeler</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Akıllı Toplama Kutuları Nerede?</h3>
+                        <div class="stats-visual">
+                            <div class="stat-visual">
+                                <div class="number">40</div>
+                                <div class="label">AVM</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">30</div>
+                                <div class="label">Okul</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">20</div>
+                                <div class="label">Belediye</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">10</div>
+                                <div class="label">Hastane</div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            'geri-donusum': {
+                title: '🔄 Geri Dönüşüm',
+                subtitle: 'Atıktan değerli kaynağa dönüşüm',
+                content: `
+                    <div class="modal-section">
+                        <h3>3 Aşamalı İşlem Sürecimiz</h3>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h4>🔍 1. Sınıflandırma</h4>
+                                <p>AI destekli otomatik pamuk, polyester, yün ayrımı</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🧽 2. Ön İşleme</h4>
+                                <p>Çevre dostu yıkama ve boyar madde giderme</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🧵 3. Fiber Üretimi</h4>
+                                <p>Mekanik parçalama veya kimyasal çözme</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Üretim Kapasitemiz</h3>
+                        <div class="stats-visual">
+                            <div class="stat-visual">
+                                <div class="number">50</div>
+                                <div class="label">Ton/gün</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">90%</div>
+                                <div class="label">Kalite oranı</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">24</div>
+                                <div class="label">Saat çalışma</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Regenerated Cotton Sürecimiz</h3>
+                        <p><strong>🧹 Temizleme:</strong> Mekanik ve kimyasal temizlik ile safsızlıklar giderilir</p>
+                        <p><strong>⚡ Parçalama:</strong> Özel makinelerle fiber boyutuna getirilir</p>
+                        <p><strong>🔧 İplikleme:</strong> Virgin pamukla karıştırılarak yeni iplik üretilir</p>
+                        <p><strong>🎯 Sonuç:</strong> Virgin pamuk kalitesinde %90 oranında regenerated cotton</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>PET Hibrid Teknolojisi</h3>
+                        <p>PET şişeler ile tekstil atıklarını birleştirerek performans kumaşları üretiyoruz. Spor giyim markalarının tercihi olan bu hibrid kumaşlar daha dayanıklı ve nefes alabilir.</p>
+                    </div>
+                `
+            },
+            'endustriyel-cozumler': {
+                title: '🏭 Endüstriyel Çözümler',
+                subtitle: 'Fabrikalardan sıfır atık hedefi',
+                content: `
+                    <div class="modal-section">
+                        <h3>On-Site Geri Dönüşüm Sistemleri</h3>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h4>⚙️ Kesim Atığı</h4>
+                                <p>Üretim sırasında oluşan fire kumaşları anında işleme</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🔄 Defolu Ürün</h4>
+                                <p>Kalite kontrol geçmeyen ürünleri hammaddeye çevirme</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>📦 Take-Back Program</h4>
+                                <p>Müşterilerden eski ürünleri geri alma sistemi</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Zero Waste Factory Konsepti</h3>
+                        <div class="stats-visual">
+                            <div class="stat-visual">
+                                <div class="number">0%</div>
+                                <div class="label">Atık oranı</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">65%</div>
+                                <div class="label">Maliyet azalımı</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">100%</div>
+                                <div class="label">Geri dönüşüm</div>
+                            </div>
+                        </div>
+                        <p>Fabrika içi atık yönetim sistemiyle üretim sürecindeki her atığı değerlendiriyoruz. Kesim artıkları dolgu malzemesi, iplik atıkları yalıtım, boyama suyu filtrelenerek tarım alanlarında kullanılıyor.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Sertifikasyon Desteği</h3>
+                        <p><strong>🏆 ISO 14001:</strong> Çevre yönetim sistemi kurulum ve sürdürme</p>
+                        <p><strong>♻️ GRS (Global Recycled Standard):</strong> Geri dönüştürülmüş içerik doğrulama</p>
+                        <p><strong>🌍 OEKO-TEX:</strong> Sürdürülebilir tekstil üretimi sertifikasyonu</p>
+                        <p><strong>📊 B Corp:</strong> Sosyal ve çevresel performans belgelendirmesi</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Başarılı Projelerimiz</h3>
+                        <p><strong>🏢 LC Waikiki:</strong> 15 fabrikada sıfır atık projesi - yıllık 2.500 ton atık geri dönüştürme</p>
+                        <p><strong>👗 Mavi Jeans:</strong> Kot üretim atıklarından yeni koleksiyon - %30 geri dönüştürülmüş içerik</p>
+                        <p><strong>🏭 İplik Fabrikası:</strong> Çırçır atığından dolgulu mont üretimi - günlük 5 ton kapasite</p>
+                    </div>
+                `
+            },
+            'raporlama': {
+                title: '📊 Raporlama',
+                subtitle: 'Şeffaflık ve izlenebilirlik önceliğimiz',
+                content: `
+                    <div class="modal-section">
+                        <h3>Sürdürülebilirlik Raporları</h3>
+                        <div class="example-grid">
+                            <div class="example-card">
+                                <h4>📈 Aylık Metrikler</h4>
+                                <p>Geri dönüştürülen kg, su/CO2 tasarrufu, enerji verimliliği</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>🌍 ESG Uyumluluk</h4>
+                                <p>Environmental, Social, Governance standartlarına uygun</p>
+                            </div>
+                            <div class="example-card">
+                                <h4>📱 Real-time Data</h4>
+                                <p>Anlık veri akışı ve dashboard üzerinden takip</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>QR Kod İzlenebilirlik Sistemi</h3>
+                        <div class="stats-visual">
+                            <div class="stat-visual">
+                                <div class="number">100%</div>
+                                <div class="label">Şeffaflık</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">24/7</div>
+                                <div class="label">Erişim</div>
+                            </div>
+                            <div class="stat-visual">
+                                <div class="number">5dk</div>
+                                <div class="label">Rapor hazırlama</div>
+                            </div>
+                        </div>
+                        <p>Her batch için özel QR kod ile carbon footprint, su kullanımı, üretim tarihi, kaynak lokasyonu bilgilerine anında erişim sağlanıyor.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Müşteri Dashboard Özellikleri</h3>
+                        <p><strong>📊 Gerçek Zamanlı Takip:</strong> Toplama, işleme ve üretim aşamalarını canlı izleme</p>
+                        <p><strong>🎯 KPI Analizi:</strong> Sürdürülebilirlik hedeflerinize göre performans ölçümü</p>
+                        <p><strong>📱 Mobil Bildirimler:</strong> Önemli milestone'lar için push notification</p>
+                        <p><strong>📤 Otomatik Paylaşım:</strong> Sosyal medyada impact story'leri otomatik yayınlama</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Impact Story Örnekleri</h3>
+                        <p><strong>🌊 "1 Ayda 50.000L Su Tasarrufu"</strong> - Geri dönüştürdüğünüz 2.5 ton tekstille olimpik havuz dolusu su tasarrufu sağladınız</p>
+                        <p><strong>🌳 "42 Ağaç Kurtarıldı"</strong> - Bu ayın geri dönüşümü sayesinde 42 ağacın kesilmesi önlendi</p>
+                        <p><strong>⚡ "18 Hanenin Yıllık Enerjisi"</strong> - Geri dönüşüm süreciyle tasarruf edilen enerji 18 evin yıllık tüketimine eşit</p>
+                    </div>
+                `
+            }
+        };
+
+        function openModal(contentId) {
+            const modal = document.getElementById('modal');
+            const content = modalContent[contentId];
+            
+            if (content) {
+                document.getElementById('modal-title').textContent = content.title;
+                document.getElementById('modal-subtitle').textContent = content.subtitle;
+                document.getElementById('modal-body').innerHTML = content.content;
+                
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
